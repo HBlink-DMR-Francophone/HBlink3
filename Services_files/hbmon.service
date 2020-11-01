@@ -1,0 +1,15 @@
+[Unit]
+Description=HBmon Service
+
+After=network-online.target
+Wants=network-online.target syslog.target
+
+[Service]
+StandardOutput=null
+WorkingDirectory=/opt/HBmonitor
+RestartSec=3
+ExecStart=/usr/bin/python3 /opt/HBmonitor/monitor.py
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
